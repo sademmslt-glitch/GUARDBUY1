@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GuardBuy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+min-height:100vh;
+color:#0f172a;
+background:
+radial-gradient(circle at 15% 10%, rgba(46,168,123,0.08), transparent 40%),
+radial-gradient(circle at 85% 90%, rgba(27,169,127,0.06), transparent 45%),
+linear-gradient(180deg,#f7fbf9 0%,#eef3f1 100%);
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.topbar{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+padding:30px 42px;
+}
+
+.logo-circle{
+position:absolute;
+left:34px;
+width:82px;
+height:82px;
+border-radius:50%;
+background:rgba(46,168,123,0.12);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.logo-circle img{
+width:60px;
+height:60px;
+object-fit:contain;
+}
+
+.brand-title{
+font-size:26px;
+font-weight:900;
+}
+
+.profile-btn{
+position:absolute;
+right:34px;
+width:54px;
+height:54px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 10px 24px rgba(0,0,0,0.12);
+font-size:20px;
+}
+
+.center{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.hero-card{
+margin-top:20px;
+display:flex;
+justify-content:center;
+}
+
+.hero-inner{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:12px;
+}
+
+.hero-inner img{
+width:240px;
+height:240px;
+object-fit:contain;
+filter: drop-shadow(0 10px 25px rgba(0,0,0,0.08));
+}
+
+.hero-inner span{
+font-size:14px;
+letter-spacing:2px;
+color:#2ea87b;
+font-weight:800;
+}
+
+.main-title{
+margin-top:44px;
+font-size:36px;
+font-weight:900;
+text-align:center;
+}
+
+.subtitle{
+margin-top:14px;
+text-align:center;
+color:#6b7280;
+font-size:18px;
+max-width:560px;
+line-height:1.6;
+}
+
+.input-box{
+margin-top:36px;
+background:white;
+border-radius:38px;
+padding:24px 26px;
+display:flex;
+align-items:center;
+box-shadow:0 16px 30px rgba(0,0,0,0.08);
+width:100%;
+max-width:560px;
+}
+
+.input-box input{
+border:none;
+flex:1;
+font-size:17px;
+outline:none;
+color:#374151;
+}
+
+.link-icon{
+font-size:20px;
+}
+
+.cta{
+margin-top:32px;
+background:linear-gradient(90deg,#2ea87b,#1f7a5c);
+color:white;
+border:none;
+width:100%;
+max-width:560px;
+padding:26px;
+border-radius:46px;
+font-size:20px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 30px 70px rgba(31,122,92,0.40);
+transition:.2s;
+}
+
+.cta:hover{
+transform:translateY(-2px);
+}
+
+.stats{
+margin-top:44px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+width:100%;
+max-width:760px;
+}
+
+.stat-card{
+background:white;
+border-radius:22px;
+padding:26px;
+text-align:center;
+box-shadow:0 14px 24px rgba(0,0,0,0.08);
+}
+
+.stat-number{
+color:#1ba97f;
+font-weight:900;
+font-size:26px;
+}
+
+.stat-label{
+font-size:14px;
+color:#9ca3af;
+margin-top:6px;
+}
+
+.bottom-nav{
+margin:44px auto;
+background:white;
+border-radius:30px;
+padding:20px;
+display:flex;
+justify-content:space-around;
+box-shadow:0 18px 34px rgba(0,0,0,0.12);
+width:100%;
+max-width:520px;
+}
+
+.nav-item{
+text-align:center;
+font-size:15px;
+color:#94a3b8;
+cursor:pointer;
+}
+
+.nav-item.active{
+color:#2ea87b;
+font-weight:900;
+}
+
+@media(max-width:600px){
+.logo-circle{width:70px;height:70px;left:18px;}
+.logo-circle img{width:50px;height:50px;}
+.profile-btn{right:18px;}
+.hero-inner img{width:170px;height:170px;}
+.main-title{font-size:26px;}
+.subtitle{font-size:15px;}
+.stats{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="topbar">
+<div class="logo-circle">
+<img src="logo.png" alt="logo">
+</div>
+<div class="brand-title">GuardBuy</div>
+
+</div>
+
+<div class="center">
+
+<div class="hero-card">
+<div class="hero-inner">
+<img src="logo.png" alt="logo">
+<span>AI PROTECTION ENGINE</span>
+</div>
+</div>
+
+<div class="main-title">
+Buy with confidence.
+</div>
+
+<div class="subtitle">
+We estimate the risk of dissatisfaction before you purchase using real customer experiences.
+</div>
+
+<div class="input-box">
+<input id="productInput" type="text"
+placeholder="Paste Amazon product link...">
+<div class="link-icon">🔗</div>
+</div>
+
+<button class="cta" onclick="startAnalysis()">
+Check Risk of Dissatisfaction
+</button>
+
+<div class="stats">
+<div class="stat-card">
+<div class="stat-number">140K+</div>
+<div class="stat-label">Reviews Analyzed</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">2.1s</div>
+<div class="stat-label">Average Analysis</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">24/7</div>
+<div class="stat-label">System Availability</div>
+</div>
+</div>
+
+<div class="bottom-nav">
+<div class="nav-item active" onclick="window.location.href='home.html'">Home</div>
+<div class="nav-item" onclick="window.location.href='history.html'">History</div>
+<div class="nav-item" onclick="window.location.href='about.html'">About</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+async function startAnalysis(){
+
+const link = document.getElementById("productInput").value.trim();
+
+if(!link){
+alert("Please enter a product link");
+return;
+}
+
+const asinPattern = /^[A-Z0-9]{10}$/i;
+const isAmazonLink = link.includes("amazon.") || link.includes("amzn.");
+
+if(!asinPattern.test(link) && !isAmazonLink){
+alert("Please enter a valid Amazon product link or ASIN.");
+return;
+}
+
+try{
+
+const res = await fetch("http://127.0.0.1:8000/analyze?url=" + encodeURIComponent(link));
+const data = await res.json();
+
+if(data.error){
+alert(data.error);
+return;
+}
+
+if(data.status === "pending"){
+alert("This product is not available in our dataset yet.");
+return;
+}
+
+// ✅ إذا موجود نكمل طبيعي للودينق
+localStorage.setItem("productLink", link);
+window.location.href = "loading.html";
+
+}catch(e){
+alert("Server connection error. Please try again.");
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GuardBuy - Result</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#eaf3ef;
+min-height:100vh;
+color:#111827;
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.topbar{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+padding:20px 28px;
+}
+
+.back-btn,
+.share-btn{
+position:absolute;
+width:46px;
+height:46px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
+cursor:pointer;
+}
+
+.back-btn{ left:24px; }
+.share-btn{ right:24px; }
+
+.topbar h2{
+font-weight:700;
+font-size:20px;
+}
+
+.app{
+width:100%;
+max-width:520px;
+padding:0 18px 100px;
+}
+
+.product-card{
+background:white;
+border-radius:22px;
+padding:18px;
+display:flex;
+gap:16px;
+align-items:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+margin-top:10px;
+}
+
+.product-card img{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:14px;
+}
+
+.product-info h3{
+font-size:16px;
+font-weight:600;
+}
+
+.product-info p{
+font-size:14px;
+color:#10b981;
+margin-top:6px;
+}
+
+.circle-wrapper{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.risk-circle{
+width:220px;
+height:220px;
+border-radius:50%;
+border:14px solid #2ea87b;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:white;
+}
+
+.risk-circle span{
+font-size:42px;
+font-weight:800;
+}
+
+.risk-circle p{
+font-size:12px;
+letter-spacing:2px;
+color:#6b7280;
+margin-top:6px;
+}
+
+.badge{
+margin-top:18px;
+background:#d1fae5;
+color:#059669;
+padding:8px 18px;
+border-radius:20px;
+font-weight:600;
+font-size:14px;
+}
+
+.metrics{
+margin-top:24px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.metric-card{
+background:white;
+border-radius:20px;
+padding:22px;
+box-shadow:0 10px 20px rgba(0,0,0,0.06);
+}
+
+.metric-icon{
+width:40px;
+height:40px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:12px;
+}
+
+.green{ background:#d1fae5; color:#059669; }
+.orange{ background:#fde8d6; color:#ea580c; }
+.blue{ background:#dbeafe; color:#2563eb; }
+.purple{ background:#ede9fe; color:#7c3aed; }
+
+.metric-card h2{
+font-size:22px;
+font-weight:800;
+}
+
+.metric-card p{
+font-size:13px;
+color:#6b7280;
+margin-top:4px;
+}
+
+.cta{
+margin-top:30px;
+background:#2ea87b;
+color:white;
+border:none;
+width:100%;
+padding:20px;
+border-radius:30px;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(46,168,123,0.3);
+}
+
+.cta:hover{
+opacity:.9;
+}
+
+@media(min-width:900px){
+.app{ max-width:760px; }
+.metrics{ grid-template-columns:repeat(4,1fr); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="topbar">
+<div class="back-btn" onclick="window.location.href='home.html'">
+<i data-lucide="arrow-left"></i>
+</div>
+
+<h2>GuardBuy Analysis</h2>
+
+<div class="share-btn" onclick="shareResult()">
+<i data-lucide="share-2"></i>
+</div>
+</div>
+
+<div class="app">
+
+<div class="product-card">
+<img id="productImage" src="">
+<div class="product-info">
+<h3 id="productName"></h3>
+<p>Verified Analysis</p>
+</div>
+</div>
+
+<div class="circle-wrapper">
+<div class="risk-circle">
+<span id="riskScore">0%</span>
+<p>DISSATISFACTION</p>
+</div>
+<div id="recommendationText" class="badge"></div>
+</div>
+
+<div class="metrics">
+
+<div class="metric-card">
+<div class="metric-icon green">
+<i data-lucide="shield-check"></i>
+</div>
+<h2 id="confidence">0%</h2>
+<p>Purchase Confidence</p>
+</div>
+
+<div class="metric-card">
+<div class="metric-icon orange">
+<i data-lucide="trending-down"></i>
+</div>
+<h2 id="highPercent">0%</h2>
+<p>Refund Probability</p>
+</div>
+
+<div class="metric-card">
+<div class="metric-icon blue">
+<i data-lucide="shield"></i>
+</div>
+<h2 id="riskLevel">Low</h2>
+<p>Risk Level</p>
+</div>
+
+<div class="metric-card">
+<div class="metric-icon purple">
+<i data-lucide="bar-chart-3"></i>
+</div>
+<h2 id="stabilityScore">High Agreement</h2>
+<p>Customer Opinion Stability</p>
+</div>
+
+</div>
+
+<button class="cta" onclick="window.location.href='dashboard.html'">
+View Full Report →
+</button>
+
+</div>
+</div>
+
+<script>
+lucide.createIcons();
+
+function shareResult(){
+if(navigator.share){
+navigator.share({
+title:'GuardBuy Analysis',
+text:'Check this product risk analysis!',
+url:window.location.href
+});
+}else{
+alert("Sharing not supported on this browser.");
+}
+}
+
+const result = JSON.parse(localStorage.getItem("analysisResult"));
+if (!result) { window.location.href = "home.html"; }
+
+document.getElementById("productName").innerText = result.product.name;
+document.getElementById("productImage").src =
+result.product.image || "https://via.placeholder.com/220";
+
+const score = result.regret.score;
+document.getElementById("riskScore").innerText = score + "%";
+
+const circle = document.querySelector(".risk-circle");
+
+if(score < 30){
+circle.style.borderColor = "#22c55e";
+}
+else if(score < 60){
+circle.style.borderColor = "#f59e0b";
+}
+else{
+circle.style.borderColor = "#ef4444";
+}
+
+document.getElementById("confidence").innerText =
+result.decision_intelligence.purchase_confidence + "%";
+
+document.getElementById("highPercent").innerText =
+result.advanced_insights.distribution.high + "%";
+
+document.getElementById("riskLevel").innerText =
+result.regret.risk_level;
+
+const variance = result.advanced_insights.variance;
+
+let stabilityText = "";
+
+if (variance < 0.05){
+stabilityText = "High Agreement";
+}
+else if (variance < 0.12){
+stabilityText = "Moderate Agreement";
+}
+else{
+stabilityText = "Mixed Opinions";
+}
+
+document.getElementById("stabilityScore").innerText = stabilityText;
+
+document.getElementById("recommendationText").innerText =
+result.recommendation;
+
+</script>
+
+</body>
+</html>

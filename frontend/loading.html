@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GuardBuy - Analyzing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+background:linear-gradient(180deg,#0d3b2f,#07261e);
+min-height:100vh;
+color:white;
+}
+
+.page{
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.top{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+padding:28px 40px;
+}
+
+.back{
+position:absolute;
+left:30px;
+width:46px;
+height:46px;
+border-radius:50%;
+background:rgba(255,255,255,0.08);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:20px;
+}
+
+.title{font-size:22px;font-weight:700;}
+
+.center{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.circle{
+width:280px;
+height:280px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle,#134e3e,#0a2f25);
+position:relative;
+}
+
+.circle::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+border:4px solid #2dd4a3;
+opacity:.3;
+}
+
+.circle-inner{
+width:150px;
+height:150px;
+border-radius:50%;
+background:rgba(0,255,170,0.15);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.center-logo{
+width:95px;
+height:95px;
+object-fit:contain;
+}
+
+.main-title{
+margin-top:30px;
+font-size:30px;
+font-weight:800;
+text-align:center;
+}
+
+.sub{
+margin-top:14px;
+font-size:17px;
+text-align:center;
+color:#a7f3d0;
+max-width:520px;
+line-height:1.6;
+}
+
+.progress-wrap{
+margin-top:40px;
+width:100%;
+max-width:520px;
+}
+
+.progress-text{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+font-size:15px;
+color:#c7f9e3;
+}
+
+.progress{
+width:100%;
+height:12px;
+background:rgba(255,255,255,0.1);
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#2dd4a3,#22c55e);
+border-radius:20px;
+transition:.3s;
+}
+
+.footer{
+text-align:center;
+font-size:13px;
+color:#7ee7c1;
+opacity:.85;
+padding:40px 20px;
+}
+
+@media(max-width:600px){
+.top{padding:22px;}
+.back{left:18px;}
+.circle{width:220px;height:220px;}
+.circle-inner{width:120px;height:120px;}
+.center-logo{width:75px;height:75px;}
+.main-title{font-size:24px;}
+.sub{font-size:15px;}
+}
+
+@media(min-width:1200px){
+.circle{width:340px;height:340px;}
+.circle-inner{width:180px;height:180px;}
+.center-logo{width:120px;height:120px;}
+.main-title{font-size:36px;}
+.sub{font-size:19px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="top">
+<div class="back" onclick="window.location.href='home.html'">←</div>
+<div class="title">GuardBuy Analysis</div>
+</div>
+
+<div class="center">
+
+<div class="circle">
+<div class="circle-inner">
+<img src="logo.png" class="center-logo">
+</div>
+</div>
+
+<div class="main-title">Verifying Authenticity</div>
+
+<div class="sub">
+Scanning thousands of data points to ensure the safest purchase decision.
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-text">
+<span>Analyzing product reviews...</span>
+<span id="percent">0%</span>
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+SECURE GUARD PROTOCOL V2.4 <br>
+© 2026 GuardBuy AI
+</div>
+
+</div>
+
+<script>
+
+history.replaceState(null, null, location.href);
+
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
+
+const productUrl = localStorage.getItem("productLink");
+
+if(!productUrl){
+window.location.href = "home.html";
+}
+
+let progress = 0;
+const fakeLoader = setInterval(()=>{
+progress += 8;
+if(progress >= 90) progress = 90;
+bar.style.width = progress + "%";
+percent.innerText = progress + "%";
+},150);
+
+async function analyzeProduct(){
+try{
+const res = await fetch("http://127.0.0.1:8000/analyze?url=" + encodeURIComponent(productUrl));
+const data = await res.json();
+
+clearInterval(fakeLoader);
+
+bar.style.width = "100%";
+percent.innerText = "100%";
+
+/* 🔴 إذا فيه خطأ */
+if(data.error){
+alert(data.error);
+window.location.href = "home.html";
+return;
+}
+
+/* 🔴 إذا المنتج غير موجود */
+if(data.status === "pending"){
+alert("This product is not available in our dataset yet.");
+window.location.href = "home.html";
+return;
+}
+
+/* ✅ فقط إذا التحليل صحيح */
+localStorage.setItem("analysisResult", JSON.stringify(data));
+
+setTimeout(()=>{
+window.location.href = "result.html";
+},700);
+
+}catch(err){
+clearInterval(fakeLoader);
+alert("Something went wrong. Please try again.");
+window.location.href = "home.html";
+}
+}
+
+analyzeProduct();
+
+</script>
+
+</body>
+</html>

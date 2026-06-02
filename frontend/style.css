@@ -1,0 +1,376 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter','Segoe UI',sans-serif;
+background:#F4F7F6;
+color:#111827;
+min-height:100vh;
+display:flex;
+justify-content:center;
+}
+
+/* container used in ALL pages */
+.app-container{
+width:100%;
+max-width:420px;
+min-height:100vh;
+padding:18px;
+background:#F4F7F6;
+}
+
+/* Tablet */
+@media(min-width:600px){
+.app-container{
+max-width:720px;
+padding:28px;
+}
+}
+
+/* Laptop */
+@media(min-width:1024px){
+.app-container{
+max-width:1100px;
+padding:40px;
+}
+}
+
+/* =========================
+   NAVBAR / TOPBAR
+========================= */
+
+.navbar,
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.logo,
+.brand-title{
+font-weight:700;
+font-size:18px;
+color:#111827;
+}
+
+.nav-links a{
+margin-left:18px;
+text-decoration:none;
+color:#6B7280;
+font-size:14px;
+transition:.2s;
+}
+
+.nav-links a:hover{
+color:#27AE82;
+}
+
+/* =========================
+   HERO / HEADER CARD
+========================= */
+
+.hero-card{
+background:#DFF1EA;
+border-radius:24px;
+padding:26px;
+position:relative;
+margin-bottom:22px;
+}
+
+.hero-inner{
+background:white;
+border-radius:18px;
+padding:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.06);
+}
+
+.hero-inner img{
+width:44px;
+height:44px;
+object-fit:contain;
+}
+
+.hero-badge{
+position:absolute;
+top:18px;
+left:18px;
+font-size:11px;
+letter-spacing:1px;
+color:#1BA97F;
+font-weight:600;
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.main-title{
+font-size:30px;
+font-weight:800;
+line-height:1.2;
+text-align:center;
+margin-top:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#6B7280;
+font-size:15px;
+margin-top:10px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-box{
+margin-top:22px;
+background:white;
+border-radius:28px;
+padding:14px 18px;
+display:flex;
+align-items:center;
+box-shadow:0 8px 18px rgba(0,0,0,0.04);
+}
+
+.input-box input{
+border:none;
+flex:1;
+font-size:14px;
+outline:none;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.cta{
+margin-top:18px;
+background:#27AE82;
+color:white;
+border:none;
+width:100%;
+padding:16px;
+border-radius:32px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 14px 28px rgba(39,174,130,0.25);
+transition:.2s;
+}
+
+.cta:hover{
+transform:translateY(-1px);
+}
+
+/* =========================
+   STATS CARDS
+========================= */
+
+.stats{
+margin-top:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.stat-card{
+background:white;
+border-radius:16px;
+padding:14px;
+text-align:center;
+box-shadow:0 10px 16px rgba(0,0,0,0.04);
+}
+
+.stat-number{
+color:#1BA97F;
+font-weight:700;
+font-size:18px;
+}
+
+.stat-label{
+font-size:11px;
+color:#9CA3AF;
+margin-top:4px;
+}
+
+/* =========================
+   RESULT PAGE
+========================= */
+
+.result-wrapper{
+margin-top:20px;
+}
+
+.product-box img{
+width:100%;
+max-width:260px;
+border-radius:14px;
+margin-bottom:20px;
+object-fit:contain;
+}
+
+.risk-circle{
+width:200px;
+height:200px;
+border-radius:50%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:bold;
+box-shadow:0 0 40px rgba(0,0,0,0.12);
+background:white;
+margin:auto;
+}
+
+/* =========================
+   INSIGHT CARDS
+========================= */
+
+.insights-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:16px;
+margin-top:30px;
+}
+
+.insight-card{
+background:white;
+padding:20px;
+border-radius:16px;
+text-align:center;
+box-shadow:0 10px 18px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   EVIDENCE
+========================= */
+
+.evidence-section{
+margin-top:40px;
+}
+
+.evidence-card{
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 10px 18px rgba(0,0,0,0.05);
+margin-bottom:16px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-container{
+margin-top:20px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+}
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-card{
+background:white;
+padding:18px;
+border-radius:18px;
+margin-bottom:14px;
+display:flex;
+gap:16px;
+align-items:center;
+box-shadow:0 10px 18px rgba(0,0,0,0.05);
+}
+
+.history-card img{
+width:70px;
+height:70px;
+object-fit:contain;
+border-radius:12px;
+background:#f3f4f6;
+padding:8px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-container{
+max-width:700px;
+margin:auto;
+}
+
+.about-card{
+background:white;
+padding:22px;
+border-radius:18px;
+margin-bottom:16px;
+box-shadow:0 10px 18px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
+margin-top:26px;
+background:white;
+border-radius:20px;
+padding:12px;
+display:flex;
+justify-content:space-around;
+box-shadow:0 8px 18px rgba(0,0,0,0.05);
+}
+
+.nav-item{
+text-align:center;
+font-size:12px;
+color:#94A3B8;
+cursor:pointer;
+}
+
+.nav-item.active{
+color:#27AE82;
+font-weight:600;
+}
+
+/* =========================
+   RESPONSIVE FIXES
+========================= */
+
+@media(max-width:600px){
+
+.main-title{
+font-size:24px;
+}
+
+.risk-circle{
+width:160px;
+height:160px;
+font-size:22px;
+}
+
+.history-card{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
