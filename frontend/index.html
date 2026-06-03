@@ -294,7 +294,7 @@ Check Risk of Dissatisfaction
 </div>
 
 <div class="bottom-nav">
-<div class="nav-item active" onclick="window.location.href='home.html'">Home</div>
+<div class="nav-item active" onclick="window.location.href='index.html'">Home</div>
 <div class="nav-item" onclick="window.location.href='history.html'">History</div>
 <div class="nav-item" onclick="window.location.href='about.html'">About</div>
 </div>
@@ -323,7 +323,7 @@ return;
 
 try{
 
-const res = await fetch("http://127.0.0.1:8000/analyze?url=" + encodeURIComponent(link));
+const res = await fetch("/analyze?url=" + encodeURIComponent(link));
 const data = await res.json();
 
 if(data.error){
