@@ -157,7 +157,7 @@ font-weight:900;
 <div class="page">
 
 <div class="topbar">
-<div class="back-btn" onclick="window.location.href='home.html'">←</div>
+<div class="back-btn" onclick="window.location.href='index.html'">←</div>
 <div class="page-title">Purchase History</div>
 <div class="delete-all" onclick="clearAll()">DEL</div>
 </div>
@@ -169,7 +169,7 @@ No analysis yet. Start analyzing products to see history.
 </div>
 
 <div class="bottom-nav">
-<div class="nav-item" onclick="window.location.href='home.html'">Home</div>
+<div class="nav-item" onclick="window.location.href='index.html'">Home</div>
 <div class="nav-item active">History</div>
 <div class="nav-item" onclick="window.location.href='about.html'">About</div>
 </div>
@@ -182,7 +182,7 @@ async function loadHistory(){
 
 try{
 
-const res = await fetch("http://127.0.0.1:8000/history");
+const res = await fetch("/history");
 
 if(!res.ok){
 document.getElementById("emptyState").style.display="block";
@@ -240,7 +240,7 @@ const confirmDelete = confirm("Delete all history?");
 if(!confirmDelete) return;
 
 try{
-await fetch("http://127.0.0.1:8000/history/clear",{ method:"DELETE" });
+await fetch("/history/clear",{ method:"DELETE" });
 loadHistory();
 }catch(e){
 alert("Delete endpoint not available.");
