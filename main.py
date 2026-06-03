@@ -156,7 +156,13 @@ def get_history(db: Session = Depends(get_db)):
         }
         for r in records
     ]
+@app.delete("/history/clear")
+def clear_history(db: Session = Depends(get_db)):
 
+    db.query(models.AnalysisHistory).delete()
+    db.commit()
+
+    return {"message": "History cleared successfully"}
 
 @app.get("/dashboard")
 def get_dashboard(db: Session = Depends(get_db)):
