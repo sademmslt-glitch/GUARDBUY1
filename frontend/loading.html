@@ -173,7 +173,7 @@ padding:40px 20px;
 <div class="page">
 
 <div class="top">
-<div class="back" onclick="window.location.href='home.html'">←</div>
+<div class="back" onclick="window.location.href='index.html'">←</div>
 <div class="title">GuardBuy Analysis</div>
 </div>
 
@@ -223,7 +223,7 @@ const percent = document.getElementById("percent");
 const productUrl = localStorage.getItem("productLink");
 
 if(!productUrl){
-window.location.href = "home.html";
+window.location.href = "index.html";
 }
 
 let progress = 0;
@@ -236,7 +236,7 @@ percent.innerText = progress + "%";
 
 async function analyzeProduct(){
 try{
-const res = await fetch("http://127.0.0.1:8000/analyze?url=" + encodeURIComponent(productUrl));
+const res = await fetch("/analyze?url=" + encodeURIComponent(productUrl));
 const data = await res.json();
 
 clearInterval(fakeLoader);
@@ -247,14 +247,14 @@ percent.innerText = "100%";
 /* 🔴 إذا فيه خطأ */
 if(data.error){
 alert(data.error);
-window.location.href = "home.html";
+window.location.href = "index.html";
 return;
 }
 
 /* 🔴 إذا المنتج غير موجود */
 if(data.status === "pending"){
 alert("This product is not available in our dataset yet.");
-window.location.href = "home.html";
+window.location.href = "index.html";
 return;
 }
 
@@ -268,7 +268,7 @@ window.location.href = "result.html";
 }catch(err){
 clearInterval(fakeLoader);
 alert("Something went wrong. Please try again.");
-window.location.href = "home.html";
+window.location.href = "index.html";
 }
 }
 
