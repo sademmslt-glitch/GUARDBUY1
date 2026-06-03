@@ -51,7 +51,7 @@ function loadResultPage() {
     const result = JSON.parse(localStorage.getItem("analysisResult"));
 
     if (!result) {
-        window.location.href = "/app/home.html";
+        window.location.href = "/app/index.html";
         return;
     }
 
