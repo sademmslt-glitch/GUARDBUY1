@@ -207,7 +207,7 @@ opacity:.9;
 <div class="page">
 
 <div class="topbar">
-<div class="back-btn" onclick="window.location.href='home.html'">
+<div class="back-btn" onclick="window.location.href='index.html'">
 <i data-lucide="arrow-left"></i>
 </div>
 
@@ -295,7 +295,7 @@ alert("Sharing not supported on this browser.");
 }
 
 const result = JSON.parse(localStorage.getItem("analysisResult"));
-if (!result) { window.location.href = "home.html"; }
+if (!result) { window.location.href = "index.html"; }
 
 document.getElementById("productName").innerText = result.product.name;
 document.getElementById("productImage").src =
